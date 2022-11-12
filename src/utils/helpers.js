@@ -234,3 +234,16 @@ export const isEmptyObj = (value) => {
     Object.getPrototypeOf(value) === Object.prototype;
   return result;
 };
+
+export const urlGenerator = (params, path) => {
+  let a = 0;
+  let url = path;
+  for (const property in params) {
+    if (a++ < 1) {
+      url = `${url}?${property}=${params[property]}`;
+    } else {
+      url = `${url}&${property}=${params[property]}`;
+    }
+  }
+  return url;
+};
